@@ -1,0 +1,62 @@
+{
+  "name": "simple-promo-cart",
+  "version": "1.0.0",
+  "description": "backend for simple promo cart",
+  "main": "index.js",
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "lcov"
+    ],
+    "exclude": [
+      "src/domain/*/service/*.test.ts"
+    ]
+  },
+  "scripts": {
+    "start": "nodemon -e ts --exec \"yarn run compile\"",
+    "clean": "rm -rf build/app && rm -rf dist",
+    "build": "npm run clean && tsc",
+    "compile": "tsc && node ./dist/index.js",
+    "test": "DOTENV_CONFIG_PATH=.env.test mocha --exit -r reflect-metadata -r ts-node/register -r dotenv/config src/domain/**/service/*.test.ts",
+    "coverage": "nyc npm run test"
+  },
+  "author": "hantze sudarma",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/polyfill": "^7.10.1",
+    "@hapi/basic": "^6.0.0",
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/inert": "^6.0.1",
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
+    "auto-bind": "^4.0.0",
+    "babel-eslint": "^10.1.0",
+    "boom": "^7.3.0",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "hapi-bodyparser": "^2.1.2",
+    "hapi-error": "^2.3.0",
+    "inversify": "^5.0.1",
+    "inversify-inject-decorators": "^3.1.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "qs": "^6.9.4",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^9.1.1",
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.32",
+    "@types/boom": "^7.3.0",
+    "@types/hapi__hapi": "^19.0.3",
+    "@types/node": "^14.0.12",
+    "@types/qs": "^6.9.3",
+    "@types/validator": "^13.0.0",
+    "nodemon": "^2.0.4",
+    "typescript": "^3.9.5"
+  }
+}
